@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>Thông tin người dùng - SSO Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        h1 { color: #333; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .nav { margin-bottom: 20px; }
+        .nav a { margin-right: 10px; }
+        .content { padding: 20px; background-color: #f9f9f9; border-radius: 5px; }
+        .user-info { margin-top: 20px; }
+        .user-info table { width: 100%; border-collapse: collapse; }
+        .user-info table th, .user-info table td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="/home">Trang chủ</a>
+            <a href="/user">Thông tin người dùng</a>
+            <a href="/logout">Đăng xuất</a>
+        </div>
+        
+        <div class="content">
+            <h1>Thông tin người dùng</h1>
+            <p>Đây là trang được bảo vệ, chỉ người dùng đã xác thực mới có thể xem.</p>
+            
+            <div class="user-info">
+                <h2>Thông tin cơ bản</h2>
+                <p>Tên người dùng: <span th:text="${username}">Unknown</span></p>
+                <p>Email: <span th:text="${email}">Unknown</span></p>
+                
+                <h2>Thông tin chi tiết</h2>
+                <table>
+                    <tr>
+                        <th>Thuộc tính</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr th:each="attr : ${attributes}">
+                        <td th:text="${attr.key}">Key</td>
+                        <td th:text="${attr.value}">Value</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

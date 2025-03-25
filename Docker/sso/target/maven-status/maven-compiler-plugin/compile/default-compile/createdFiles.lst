@@ -1,0 +1,7 @@
+com\example\sso\service\UserInfoService.class
+com\example\sso\config\OAuth2LoginSuccessHandler.class
+com\example\sso\controller\HomeController.class
+com\example\sso\config\SecurityConfig.class
+com\example\sso\controller\UserInfoController.class
+com\example\sso\SsoApplication.class
+com\example\sso\controller\ApiController.class

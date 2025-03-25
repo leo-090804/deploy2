@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Đăng nhập - SSO Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        h1 { color: #333; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .nav { margin-bottom: 20px; }
+        .nav a { margin-right: 10px; }
+        .content { padding: 20px; background-color: #f9f9f9; border-radius: 5px; }
+        .login-btn { 
+            display: inline-block;
+            background-color: #eb5424;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .login-btn:hover { background-color: #ca481e; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="/home">Trang chủ</a>
+        </div>
+        
+        <div class="content">
+            <h1>Đăng nhập</h1>
+            <p>Vui lòng đăng nhập để truy cập vào các tài nguyên được bảo vệ.</p>
+            
+            <div th:if="${param.error}" style="color: red;">
+                <p>Đăng nhập thất bại. Vui lòng thử lại.</p>
+            </div>
+            
+            <p>
+                <a href="/oauth2/authorization/auth0" class="login-btn">Đăng nhập với Auth0</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

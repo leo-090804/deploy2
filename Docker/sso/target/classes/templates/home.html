@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>Trang chủ - SSO Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        h1 { color: #333; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .nav { margin-bottom: 20px; }
+        .nav a { margin-right: 10px; }
+        .content { padding: 20px; background-color: #f9f9f9; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="/home">Trang chủ</a>
+            <a href="/user" sec:authorize="isAuthenticated()">Thông tin người dùng</a>
+            <a href="/login" sec:authorize="!isAuthenticated()">Đăng nhập</a>
+            <a href="/logout" sec:authorize="isAuthenticated()">Đăng xuất</a>
+        </div>
+        
+        <div class="content">
+            <h1>Demo Spring Boot SSO với Auth0</h1>
+            <p>Đây là trang chủ công khai, ai cũng có thể truy cập!</p>
+            
+            <div sec:authorize="isAuthenticated()">
+                <p>Xin chào <span sec:authentication="name"></span>! Bạn đã đăng nhập.</p>
+                <p><a href="/user">Xem thông tin người dùng</a></p>
+            </div>
+            
+            <div sec:authorize="!isAuthenticated()">
+                <p>Bạn chưa đăng nhập. <a href="/login">Đăng nhập ngay</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
